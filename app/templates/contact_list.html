@@ -18,6 +18,7 @@
             </thead>
             <tbody>
                 {% for contact in contacts %}
+<!--                ondblclick="toggleDetails(this)"-->
                 <tr class="contact-row" data-contact-id="{{ contact.id }}" ondblclick="toggleDetails(this)">
                     <td>
                         <img src="{{ contact.photo.url }}" alt="Contact`s photo" width="50">
@@ -57,8 +58,7 @@
     <div class="action-buttons">
         <a href="{% url 'add_contact' %}" class="btn btn-primary">New Contact</a>
         <a href="#" class="btn btn-secondary" id="editButton">Edit Contact</a>
-        <a href="#" class="btn btn-danger">Delete Contact</a>
-        <a href="#" class="btn btn-info">About Contact</a>
-        <a href="#" class="btn btn-success">Display</a>
+        <a href="#" class="btn btn-danger" id="deleteButton">Delete Contact</a>
+        <a href="#" class="btn btn-info" id="aboutButton">About Contact</a>
     </div>
 {% endblock %}

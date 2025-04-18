@@ -27,3 +27,25 @@ def edit_contact(request, pk):
     else:
         form = ContactsForm(instance=contact)
     return render(request, 'contact_form.html', {'form': form})
+
+
+def delete_contact(request, pk):
+    contact = get_object_or_404(Contact, pk=pk)
+    contact.delete()
+    return redirect('contact_list')
+
+
+def about_contact(request, pk):
+    contact = get_object_or_404(Contact, pk=pk)
+    print(contact.first_name)
+    print(contact.last_name)
+    print(contact.phone_number)
+    # print(contact.photo)
+    # if request.method == 'POST':
+    #     form = ContactsForm(request.POST, request.FILES, instance=contact)
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect('contact_list')
+    # else:
+    #     form = ContactsForm(instance=contact)
+    return render(request, 'about_contact.html', {'contact': contact})
